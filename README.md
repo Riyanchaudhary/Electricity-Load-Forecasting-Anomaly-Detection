@@ -1,116 +1,62 @@
-🔌 AI-Based Power Load Forecasting & Anomaly Detection
-This project leverages machine learning to predict future electricity demand and detect anomalies (like unexpected spikes or drops) in power usage. Built using Python and real-world energy data, it offers actionable insights for energy management and utility planning.
+# AI-Based Power Load Forecasting & Anomaly Detection
 
-📌 What It Does
-🔮 Forecasts electricity load based on:
+A machine learning system that forecasts electricity demand and detects
+anomalies in power usage using real-world hourly energy data from the
+PJM East region.
 
-Time of day
+---
 
-Date
+## Overview
 
-Weekday
+Utilities and energy managers need reliable demand forecasts and early
+warning systems for irregular consumption. This project addresses both:
+- **Load Forecasting** — predict future electricity demand from temporal features
+- **Anomaly Detection** — flag unexpected spikes or drops in consumption
 
-🌲 Trains a Random Forest model to predict demand with around 12% error.
+---
 
-⚠️ Detects anomalies in electricity usage using Isolation Forest — useful for spotting power outages, misuse, or irregular consumption.
+## Tech Stack
 
-📈 Visualizes results through:
+- **Python**, Pandas, Scikit-learn, Matplotlib
+- **RandomForestRegressor** — load forecasting
+- **IsolationForest** — anomaly detection
 
-Actual vs. Predicted Load graph
+---
 
-Anomaly Detection timeline with red markers
+## Dataset
 
-🧠 Tech Behind It
-Python – Core programming language
+- **Source:** PJM Energy (publicly available)
+- **Type:** Hourly electricity load data, PJM East region
+- **Usage:** Model training, validation, anomaly detection
 
-Pandas – Data preprocessing & feature extraction
+---
 
-Matplotlib – Clean and informative graphs
+## Pipeline
 
-Scikit-learn –
+1. **Load & Clean** — remove nulls, parse timestamps
+2. **Feature Engineering** — extract hour, day, weekday
+3. **Forecasting** — train RandomForestRegressor, evaluate with MAE
+4. **Anomaly Detection** — IsolationForest flags irregular consumption
+5. **Visualization** — actual vs predicted plot + anomaly timeline
 
-RandomForestRegressor for load forecasting
+---
 
-IsolationForest for anomaly detection
+## Results
 
-📊 Dataset Info
-Source: PJM Energy
+| Metric | Value |
+|--------|-------|
+| MAE | ~3000 MW |
+| Error Rate | ~12% |
 
-Type: Hourly electricity load data (PJM East region)
+---
 
-Used For:
+## Visualizations
 
-Training the ML models
+- **Actual vs Predicted Load** — tracks model accuracy over time
+- **Anomaly Timeline** — red markers highlight flagged anomalies
 
-Validating predictions and anomaly detection
+---
 
-💻 How It Works
-Load & Clean Data
+## Author
 
-Removes missing values
-
-Converts timestamps into usable formats
-
-Feature Engineering
-
-Extracts hour, day, and weekday from timestamps
-
-Model Training
-
-Trains a RandomForestRegressor on historical load data
-
-Evaluates performance using Mean Absolute Error (MAE)
-
-Achieved ~3000 MW MAE → approx. 12% error
-
-Anomaly Detection
-
-Uses IsolationForest to flag unusual behavior in load data
-
-Visualization
-
-Plots predictions vs. actual load
-
-Highlights anomalies with red dots for interpretability
-
-📈 Sample Results
-MAE: ~3000 MW
-
-Error: ~12%
-
-📉 Actual vs Predicted Load Over Time
-![image](https://github.com/user-attachments/assets/87ec1a95-6b9f-482b-a0fa-d100f2675339)
-
-
-🔴 Anomalies on a Timeline Graph
-![image](https://github.com/user-attachments/assets/3418be24-1ff3-46b5-aa8f-7f60a86052ab)
-
-
-
-📊 Graphs Explained
-1. Actual vs Predicted Load Graph
-Purpose: Compare model predictions against true values
-
-Insights:
-
-Small gaps = accurate model
-
-Large gaps = areas of error
-
-Observation:
-
-Predictions align well with actuals → only ~12% average error
-
-2. Anomaly Detection Graph
-Purpose: Spot unusual consumption patterns over time
-
-Highlights:
-
-Red dots indicate flagged anomalies
-
-Helps detect possible system faults or unexpected usage
-
-📌 Example Scenarios
-⚡ A spike at midnight → May indicate equipment failure or reporting error
-
-⚡ Drop during peak hours → Could signal outages or sensor malfunctions
+Riyan Chaudhary
